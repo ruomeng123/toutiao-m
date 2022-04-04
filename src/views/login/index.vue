@@ -1,7 +1,9 @@
 <template>
   <div class="login-container">
     <!-- 标题栏 -->
-    <van-nav-bar title="登录" />
+    <van-nav-bar class="login-navbar" title="登录">
+      <van-icon slot="left" name="cross" @click="$router.back()" />
+    </van-nav-bar>
     <!-- 登录表单区域 -->
     <van-form @submit="onLogin" ref="loginForm">
       <!-- 手机号区域 -->
@@ -123,6 +125,9 @@ export default {
         this.$store.commit('setUser',res.data.data)
 
         this.$toast.success("登录成功!");
+
+        // 跳转页面
+        this.$router.back()
       } catch (err) {
         if (err.response.status === 400) {
           // console.log("登录失败", err);
@@ -163,7 +168,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .login-container {
   .login-btn-wrap {
     margin: 53px 28px;

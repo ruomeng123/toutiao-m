@@ -2,7 +2,7 @@
   font-family: "toutiao";
   /* Project id 3291239 */
   /* Color fonts */
-  src: url('//at.alicdn.com/t/font_3291239_8qjp1lwi3u.woff2?t=1648649053642') format('woff2'), url('//at.alicdn.com/t/font_3291239_8qjp1lwi3u.woff?t=1648649053642') format('woff'), url('//at.alicdn.com/t/font_3291239_8qjp1lwi3u.ttf?t=1648649053642') format('truetype');
+  src: url('//at.alicdn.com/t/font_3291239_7nin080425q.woff2?t=1648980214049') format('woff2'), url('//at.alicdn.com/t/font_3291239_7nin080425q.woff?t=1648980214049') format('woff'), url('//at.alicdn.com/t/font_3291239_7nin080425q.ttf?t=1648980214049') format('truetype');
 }
 .toutiao {
   font-family: "toutiao" !important;
@@ -76,10 +76,14 @@
 }
 body {
   background-color: #f5f7f9;
+  box-sizing: border-box;
 }
 .van-nav-bar__content {
   background-color: #3296fa;
 }
 .van-nav-bar__content .van-nav-bar__title {
   color: #fff;
+}
+.van-nav-bar__content .van-nav-bar__left .van-nav-bar .van-icon {
+  color: #fff !important;
 }
