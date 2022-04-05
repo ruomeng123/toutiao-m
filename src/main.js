@@ -13,6 +13,9 @@ import 'vant/lib/index.css'
 // 加载动态设置 REM 基准值模块
 import 'amfe-flexible'
 
+// 加载dayjs
+import '@/utils/dayjs'
+
 Vue.use(Vant)
 
 Vue.config.productionTip = false

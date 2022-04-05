@@ -24,8 +24,16 @@ export const getUserInfo = () => {
   return request({
     method: 'GET',
     url: '/v1_0/user',
-    headers: {
-      Authorization: `Bearer ${store.state.user.token}`
-    }
+    // headers: {
+    //   Authorization: `Bearer ${store.state.user.token}`
+    // }
+  })
+}
+
+// 请求用户自己的频道
+export const getUserChannelsList = () => {
+  return request({
+    method: 'GET',
+    url: '/v1_0/user/channels',
   })
 }
