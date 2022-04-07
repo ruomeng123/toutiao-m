@@ -143,9 +143,9 @@ export default {
   .header {
     height: 360px;
     width: 100%;
-    // background-color: antiquewhite;
-    background: url("~@/assets/banner.png") no-repeat;
-    background-size: cover;
+    background-color: #4fc08d;
+    // background: url("~@/assets/banner.png") no-repeat;
+    // background-size: cover;
   }
   .not-login {
     display: flex;

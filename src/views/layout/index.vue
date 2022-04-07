@@ -4,7 +4,7 @@
     <router-view />
 
     <!-- 标签导航栏 -->
-    <van-tabbar class="layout-tabbar" route >
+    <van-tabbar class="layout-tabbar" active-color="#4fc08d" route>
       <van-tabbar-item replace to="/">
         <i slot="icon" class="toutiao toutiao-shouye"></i>
         <span class="text">首页</span>
@@ -19,7 +19,7 @@
       </van-tabbar-item>
       <van-tabbar-item replace to="/my">
         <i slot="icon" class="toutiao toutiao-wode"></i>
-        <span class="text">{{ $store.state.user ? '我的' : '未登录'}}</span>
+        <span class="text">{{ $store.state.user ? "我的" : "未登录" }}</span>
       </van-tabbar-item>
     </van-tabbar>
   </div>
@@ -34,8 +34,7 @@ export default {
   props: {},
 
   data() {
-    return {
-    };
+    return {};
   },
 
   computed: {},
@@ -54,6 +53,9 @@ export default {
 .layout-container {
   .layout-tabbar {
     .van-tabbar-item {
+      .van-tabbar-item--active {
+        color: #4fc08d;
+      }
       i.toutiao {
         font-size: 40px;
       }

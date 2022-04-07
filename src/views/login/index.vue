@@ -173,7 +173,7 @@ export default {
   .login-btn-wrap {
     margin: 53px 28px;
     .login-btn {
-      background-color: #6db4fb;
+      background-color: #4fc08d;
       border: none;
       border-radius: 10px;
       font-size: 30px;
@@ -197,6 +197,9 @@ export default {
       font-size: 22px;
       line-height: 46px;
     }
+  }
+  .van-icon {
+    color: #fff;
   }
 }
 </style>

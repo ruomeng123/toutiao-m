@@ -2,7 +2,7 @@
   <div class="home-container">
     <!-- 搜索区域 -->
     <van-nav-bar class="home-navbar" fixed>
-      <van-button slot="title" icon="search" round small type="info"
+      <van-button slot="title" icon="search" round small type="info" to="/search"
         >搜索</van-button
       >
     </van-nav-bar>
@@ -106,7 +106,7 @@ export default {
             console.log(channels);
           }
         }
-        this.channels = channels
+        this.channels = channels;
       } catch (err) {
         this.$toast("频道数据获取失败！");
       }
@@ -167,7 +167,7 @@ export default {
       .van-tabs__line {
         width: 31px;
         height: 6px;
-        background-color: #3296fa;
+        background-color: #4fc08d;
         bottom: 8px;
       }
       .hamburger-btn {
