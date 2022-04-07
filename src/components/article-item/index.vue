@@ -2,9 +2,7 @@
   <van-cell class="article-item">
     <!-- 文章标题 -->
     <div slot="title" class="title van-multi-ellipsis--l2">
-      {{
-        article.title
-      }}和的身份各个活动获奖时间看看打死他和家人金融业岭回归u和vu看看vu宝宝v湖北v和将很快乖乖回复vu应付应付关于
+      {{ article.title }}
     </div>
     <div slot="label">
       <!-- 如果文章有三张封面，显示这个结构 -->
@@ -21,7 +19,7 @@
       <div class="article-info">
         <span>{{ article.aut_name }}</span>
         <span>{{ article.comm_count }}评论</span>
-        <span>{{ article.pubdate | relativeTime}}</span>
+        <span>{{ article.pubdate | relativeTime }}</span>
       </div>
     </div>
     <!-- 如果文章只有一张封面，则显示这个结构 -->
