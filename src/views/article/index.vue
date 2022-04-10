@@ -56,12 +56,30 @@
         ></div>
         <van-divider>正文结束</van-divider>
 
+        <!-- 文章评论组件 -->
+        <article-comment
+          :list="commentList"
+          :source="this.article.art_id"
+          @onload-success="totalCommentCount = $event.total_count"
+          @replyClick="onReplyClick"
+        />
+
         <!-- 底部区域 -->
         <div class="article-bottom">
-          <van-button class="comment-btn" type="default" round size="small"
+          <van-button
+            class="comment-btn"
+            type="default"
+            round
+            size="small"
+            @click="isPostShow = true"
             >写评论</van-button
           >
-          <van-icon class="btn-item" name="comment-o" info="123" />
+          <van-icon
+            class="btn-item"
+            name="comment-o"
+            :info="totalCommentCount"
+            @click="is_scroll = true"
+          />
           <!-- 收藏功能组件 -->
           <collect-article
             class="btn-item"
@@ -75,12 +93,17 @@
             :articleId="this.article.art_id"
             v-model="article.attitude"
           />
-          <van-icon
-            name="share"
-            color="#777777"
-          ></van-icon>
+          <van-icon name="share" color="#777777"></van-icon>
         </div>
         <!-- /底部区域 -->
+        <!-- 发布评论 -->
+        <van-popup v-model="isPostShow" position="bottom">
+          <comment-post
+            :target="article.art_id"
+            @post-success="onPostSuccess"
+          />
+        </van-popup>
+        <!-- /发布评论 -->
       </div>
       <!-- /加载完成-文章详情 -->
 
@@ -98,6 +121,17 @@
       </div>
       <!-- /加载失败：其它未知错误（例如网络原因或服务端异常） -->
     </div>
+
+    <!-- 发布回复评论 -->
+    <van-popup v-model="isReplyShow" position="bottom" style="height: 100%">
+      <!-- 回复评论组件 -->
+      <comment-reply
+        v-if="isReplyShow"
+        :comment="currentComment"
+        @closeReply="isReplyShow = false"
+      />
+    </van-popup>
+    <!-- /发布回复评论 -->
   </div>
 </template>
 
@@ -107,6 +141,9 @@ import { ImagePreview } from "vant";
 import UserFollow from "@/components/user-follow";
 import CollectArticle from "@/components/collect-article";
 import LikeArticle from "@/components/like-article";
+import ArticleComment from "@/views/article/components/article-comment";
+import CommentPost from "@/views/article/components/comment-post";
+import CommentReply from "@/views/article/components/comment-reply";
 
 export default {
   name: "ArticleIndex",
@@ -114,6 +151,9 @@ export default {
     UserFollow,
     CollectArticle,
     LikeArticle,
+    ArticleComment,
+    CommentPost,
+    CommentReply,
   },
   props: {
     articleId: {
@@ -121,11 +161,23 @@ export default {
       required: true,
     },
   },
+  // 传给所有后代组件
+  provide: function () {
+    return {
+      articleId: this.articleId,
+    };
+  },
   data() {
     return {
       loading: true,
       article: {}, // 文章详情
       errStatus: 0, // 错误代码
+      totalCommentCount: 0, // 文章评论数量
+      isPostShow: false, // 发布评论组件显示状态
+      commentList: [], //评论列表
+      isReplyShow: false, // 回复评论组件显示状态
+      currentComment: {}, // 当前回复的评论
+      // is_scroll: false, // 控制是否下拉到评论区
     };
   },
   computed: {},
@@ -168,6 +220,19 @@ export default {
         };
       });
     },
+    onPostSuccess(data) {
+      // 关闭弹窗
+      this.isPostShow = false;
+      // 把评论追加到评论列表顶部
+      this.commentList.unshift(data.new_obj);
+      // 把评论总数更新一下
+      this.totalCommentCount++;
+    },
+    onReplyClick(comment) {
+      this.currentComment = comment;
+      console.log(comment);
+      this.isReplyShow = true;
+    },
   },
 };
 </script>
@@ -175,6 +240,9 @@ export default {
 <style scoped lang="less">
 @import "./github-markdown.css";
 .article-container {
+  body {
+    height: auto;
+  }
   /deep/.van-icon {
     color: #fff;
   }
