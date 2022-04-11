@@ -1,5 +1,7 @@
 <template>
-  <div class="qa-container">问答</div>
+  <div class="qa-container">
+    <h3>开发中...</h3>
+  </div>
 </template>
 
 <script>
@@ -27,4 +29,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
+h3 {
+  text-align: center;
+  color: rgb(13, 163, 118);
+}
 </style>

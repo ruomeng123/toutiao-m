@@ -9,11 +9,11 @@
             class="avatar"
             round
             fit="cover"
-            src="userInfo.photo"
+            :src="userInfo.photo"
           />
           <div class="txt">{{userInfo.name}}</div>
         </div>
-        <div class="right">编辑资料</div>
+        <van-button class="right" size="mini" to="/user-profile">编辑资料</van-button>
       </div>
       <!-- 数据统计部分 -->
       <div class="data-stats">
